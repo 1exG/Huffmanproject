@@ -72,7 +72,7 @@ public class HuffProcessor {
 				out.writeBits(code.length(), Integer.parseInt(code,2));
 				break;
 			}
-			String code = encodings[Integer.parseInt(Integer.toString(val),2)];
+			String code = encodings[val];
 			out.writeBits(code.length(), Integer.parseInt(code,2));
 		}
 		
@@ -151,11 +151,12 @@ public class HuffProcessor {
 		int[] freq = new int[ALPH_SIZE + 1];
 		while (true){
 			int val = in.readBits(BITS_PER_WORD);
-			freq[Integer.parseInt(Integer.toString(val),2)]++;
 			if (val == -1) {
 				freq[PSEUDO_EOF] = 1;
 				break;
 			}
+			freq[val]++;
+			
 		}
 		return freq;
 	}
