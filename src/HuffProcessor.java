@@ -151,7 +151,7 @@ public class HuffProcessor {
 		int[] freq = new int[ALPH_SIZE + 1];
 		while (true){
 			int val = in.readBits(BITS_PER_WORD);
-			freq[val]++;
+			freq[Integer.parseInt(Integer.toString(val),2)]++;
 			if (val == -1) {
 				freq[PSEUDO_EOF] = 1;
 				break;
